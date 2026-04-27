@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -exuo pipefail
 
 readonly version="$1"
 
@@ -49,6 +49,7 @@ package(){
     pushd "${package_root}"
         cp -r ${build_root}/bin ./
         tar czvf podman-remote-static-linux_loong64.tar.gz bin
+        rm -rf bin
     popd
 
 }
