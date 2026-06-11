@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  UPSTREAM_OWNER: "containers"  # 上游开发者/组织名
+  UPSTREAM_OWNER: "podman-container-tools"  # 上游开发者/组织名
   UPSTREAM_REPO: "podman"   # 上游仓库名
 
 jobs:
@@ -26,7 +26,7 @@ jobs:
         id: check
         run: |
           # 1. 获取上游最新版本
-          LATEST_VERSION=$(curl -s "https://api.github.com/repos/${{ env.UPSTREAM_OWNER }}/${{ env.UPSTREAM_REPO }}/releases/latest" | jq -r ".tag_name")
+          LATEST_VERSION=$(curl -sL "https://api.github.com/repos/${{ env.UPSTREAM_OWNER }}/${{ env.UPSTREAM_REPO }}/releases/latest" | jq -r ".tag_name")
           LATEST_VERSION=${LATEST_VERSION#*v}
           echo "Latest upstream podman version: $LATEST_VERSION"
 

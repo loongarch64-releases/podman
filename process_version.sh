@@ -3,7 +3,7 @@ set -exuo pipefail
 
 readonly version="$1"
 
-readonly org='containers'
+readonly org='podman-container-tools'
 readonly proj='podman'
 readonly arch='loongarch64'
 readonly goarch='loong64'

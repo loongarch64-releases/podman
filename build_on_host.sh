@@ -2,11 +2,11 @@
 
 set -ex;
 
-org='containers'
+org='podman-container-tools'
 proj='podman'
 
 docker_build() {
-    local version=$(curl -s https://api.github.com/repos/${org}/${proj}/releases/latest | jq -r ".tag_name")
+    local version=$(curl -sL https://api.github.com/repos/${org}/${proj}/releases/latest | jq -r ".tag_name")
     local builder="${org}-${proj}-builder"
     local version=${version#v}
     docker build -t ${builder} .
